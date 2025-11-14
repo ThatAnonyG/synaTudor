@@ -14,12 +14,24 @@ udev_dep = dependency('udev')
 libusb_dep = dependency('libusb-1.0')
 gusb_dep = dependency('gusb')
 json_glib_dep = dependency('json-glib-1.0')
+# gio_unix_dep is already defined in parent meson.build
 
 tudor_tod = shared_module('tudor_tod',
     sources: tudor_tod_src,
     c_args: ['-D_GNU_SOURCE', '-Wno-missing-braces'],
-    dependencies: [libfprint_tod_dep, libusb_dep, gusb_dep, json_glib_dep],
-    include_directories: [libtudor_inc, tudor_host_inc, tudor_host_launcher_inc],
+    dependencies: [
+        libfprint_tod_dep, 
+        libusb_dep, 
+        gusb_dep, 
+        json_glib_dep,
+        gio_unix_dep  # Add gio_unix_dep for gunixfdmessage.h
+    ],
+    include_directories: [
+        libtudor_inc, 
+        tudor_host_inc, 
+        tudor_host_launcher_inc,
+        libfprint_tod_inc  # Add libfprint_tod_inc for fp-image.h
+    ],
     install: true,
     install_dir: libfprint_tod_dep.get_variable(pkgconfig: 'tod_driversdir')
 )

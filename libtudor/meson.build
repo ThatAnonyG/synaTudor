@@ -73,8 +73,8 @@ add_global_arguments('-Wno-incompatible-pointer-types', language : 'c')
 
 driver_dlls = custom_target('driver-download', 
     output: driver_dll_names,
-    input: ['download_driver.sh', 'installer.sha'],
-    command: [find_program('bash'), '@INPUT0@', '@INPUT1@', '@PRIVATE_DIR@', '@OUTDIR@'] + driver_dll_names
+    input: ['download_driver.sh', 'installer.sha', 'installer.exe'],
+    command: [find_program('bash'), '@INPUT0@', '@INPUT1@', '@INPUT2@', '@PRIVATE_DIR@', '@OUTDIR@'] + driver_dll_names
 )
 
 driver_dll_blobs = generator(find_program('ld'),

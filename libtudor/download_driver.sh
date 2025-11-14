@@ -1,15 +1,16 @@
 #!/bin/bash -e
 
 HASH_FILE="$1"
-TMP_DIR="$2"
-OUT_DIR="$3"
-DLLS=${@:4}
+INSTALLER_EXE="$2"
+TMP_DIR="$3"
+OUT_DIR="$4"
+DLLS=${@:5}
 
 mkdir -p "$TMP_DIR"
 
 #Download the driver executable and check hash
 INSTALLER="$TMP_DIR/installer.exe"
-wget --no-check-certificate https://download.lenovo.com/pccbbs/mobiles/r19fp02w.exe -O "$INSTALLER"
+cp "$INSTALLER_EXE" "$INSTALLER"
 shasum "$INSTALLER" | cut -d" " -f1 | cmp - "$HASH_FILE"
 
 #Extract the driver
@@ -19,7 +20,6 @@ innoextract -d "$WINDRV" "$INSTALLER"
 
 #Copy outputs
 mkdir -p "$OUT_DIR"
-for dll in $DLLS
-do
-    cp $(find "$WINDRV" -name "$dll") "$OUT_DIR/$dll"
+for dll in $DLLS; do
+	cp $(find "$WINDRV" -name "$dll") "$OUT_DIR/$dll"
 done

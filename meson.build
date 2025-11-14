@@ -3,7 +3,7 @@ project('synaTudor', ['c'],
     meson_version: '>= 0.57.0'
 )
 
-INSTALL_DIR = '/sbin/tudor'
+INSTALL_DIR = get_option('install_dir')
 
 # Add gio-unix-2.0 for gunixfdmessage.h
 gio_unix_dep = dependency('gio-unix-2.0')

@@ -1,5 +1,9 @@
 [Unit]
 Description=Tudor host launcher DBus service
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
 
 [Service]
 Type=dbus

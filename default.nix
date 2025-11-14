@@ -73,6 +73,9 @@ stdenv.mkDerivation {
     substituteInPlace libfprint-tod/meson.build \
       --replace "install_dir: udev_dep.get_variable(pkgconfig: 'udevdir')" \
                 "install_dir: '${placeholder "out"}/lib/udev/rules.d/'"
+
+    substituteInPlace libfprint-tod/60-tudor-libfprint-tod.rules \
+      --replace "plugdev" "users"
   '';
 
   mesonFlags = [

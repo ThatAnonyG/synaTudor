@@ -5,12 +5,20 @@
   ninja,
   pkg-config,
   glib,
+  glibc,
+  gcc,
   libusb1,
-  libgusb,
-  json-glib,
+  gusb,
+  libjson,
+  libfprint,
   libfprint-tod,
   innoextract,
+  openssl,
+  libcap,
+  libseccomp,
+  dbus,
   wget,
+  cmake,
 }:
 stdenv.mkDerivation {
   pname = "synaTudor";
@@ -19,19 +27,27 @@ stdenv.mkDerivation {
   src = ./.; # Use current directory, or use fetchFromGitHub for remote repo
 
   nativeBuildInputs = [
-    meson
-    ninja
     pkg-config
-    innoextract
-    wget
   ];
 
   buildInputs = [
+    meson
+    ninja
+    innoextract
+    wget
     glib
+    glibc
+    gcc
     libusb1
-    libgusb
-    json-glib
+    gusb
+    libjson
+    libfprint
     libfprint-tod
+    openssl
+    libcap
+    libseccomp
+    dbus
+    cmake
   ];
 
   # Patch meson.build to fix include paths

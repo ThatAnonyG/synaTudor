@@ -79,6 +79,8 @@ stdenv.mkDerivation {
     "-Dinstall_dir=${placeholder "out"}/sbin/tudor"
   ];
 
+  passthru.driverPath = "/lib/libfprint-2/tod-1";
+
   meta = with lib; {
     description = "Synaptics Tudor fingerprint driver";
     homepage = "https://github.com/your-repo/synaTudor";

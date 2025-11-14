@@ -16,12 +16,7 @@ stdenv.mkDerivation {
   pname = "synaTudor";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
-    owner = "ThatAnonyG";
-    repo = "synaTudor";
-    rev = "b93c848092f7e668c926ad7c19b4ecf2bf3f76c5"; # pick a commit
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-  };
+  src = ./.; # Use current directory, or use fetchFromGitHub for remote repo
 
   nativeBuildInputs = [
     meson

@@ -65,7 +65,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Synaptics Tudor fingerprint driver";
     homepage = "https://github.com/your-repo/synaTudor";
-    license = licenses.unfree; # Adjust based on your license
+    license = licenses.free; # Adjust based on your license
     platforms = platforms.linux;
     maintainers = [];
   };

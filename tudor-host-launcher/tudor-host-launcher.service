@@ -13,6 +13,11 @@ WorkingDirectory=/sbin/tudor/
 StateDirectory=tudor
 StateDirectoryMode=0700
 
+Restart=always
+RestartSec=0.5
+
+Environment=TUDOR_SYNC_USB=1
+
 ProtectSystem=strict
 ProtectKernelTunables=true
 ProtectKernelLogs=true

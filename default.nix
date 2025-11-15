@@ -64,11 +64,11 @@ stdenv.mkDerivation {
 
     substituteInPlace tudor-host-launcher/meson.build \
       --replace "install_dir: dbus_dep.get_variable(pkgconfig: 'datadir') / 'dbus-1/system.d'" \
-                "install_dir: '${placeholder "out"}/etc/dbus-1/system.d'"
+                "install_dir: '${placeholder "out"}/share/dbus-1/system.d'"
 
     substituteInPlace tudor-host-launcher/meson.build \
       --replace "install_dir: dbus_dep.get_variable(pkgconfig: 'system_bus_services_dir')" \
-                "install_dir: '${placeholder "out"}/etc/dbus-1/system-services'"
+                "install_dir: '${placeholder "out"}/share/dbus-1/system-services'"
 
     substituteInPlace libfprint-tod/meson.build \
       --replace "install_dir: udev_dep.get_variable(pkgconfig: 'udevdir')" \
